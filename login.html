@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal | Veritas Hospital</title>
+    <link rel="stylesheet" href="lstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-error-msg {
+            color: #ef4444;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 15px;
+            min-height: 20px;
+            background: #fef2f2;
+            border-radius: 8px;
+            padding: 8px;
+            display: none;
+            /* Hidden by default until an error occurs */
+        }
+
+        .login-error-msg.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="corporate-body">
+
+    <div class="corp-login-container">
+
+        <div class="corp-left-panel">
+            <div class="corp-brand">
+                <img src="logo2.png" alt="Veritas Logo" class="login-logo">
+                <span>Veritas Hospital</span>
+            </div>
+
+            <div class="corp-welcome">
+                <h1>Staff <br><span style="color: #0ea5e9;">Portal Area</span></h1>
+                <p>Authorized access only. Please ensure you are connected to a secure network before logging into the
+                    hospital database.</p>
+            </div>
+
+            <div class="corp-footer">
+                <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Return to Public Site</a>
+                <span class="version">v3.0.0 (Secure DB)</span>
+            </div>
+        </div>
+
+        <div class="corp-right-panel">
+            <div class="form-header">
+                <h2>Secure Sign In</h2>
+                <p>Enter your numeric employee credentials to continue.</p>
+            </div>
+
+            <form id="corpLoginForm" class="corp-form">
+
+                <div class="corp-input-group">
+                    <label for="employeeId">Employee ID (Numbers Only)</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-address-card left-icon"></i>
+                        <input type="text" inputmode="numeric" id="employeeId" placeholder="e.g. 1045" required
+                            autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="corp-input-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock left-icon"></i>
+                        <input type="password" id="password" class="password-input" placeholder="••••••••" required>
+                        <button type="button" id="toggleBtn" class="pass-toggle"><i
+                                class="fa-regular fa-eye"></i></button>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <label class="remember-check">
+                        <input type="checkbox"> Remember me on this device
+                    </label>
+                    <a href="#" class="forgot-link">Reset Password</a>
+                </div>
+
+                <button type="submit" class="corp-submit-btn" id="loginSubmitBtn">Authorize Login</button>
+
+                <div id="loginError" class="login-error-msg"></div>
+            </form>
+        </div>
+
+    </div>
+
+    <script type="module" src="lscript.js"></script>
+</body>
+
+</html>

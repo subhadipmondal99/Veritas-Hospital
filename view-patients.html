@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Directory | Veritas Hospital</title>
+    <link rel="stylesheet" href="view-patients.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dash-layout-body">
+
+    <aside class="dash-sidebar">
+        <div class="dash-sidebar-header">
+            <img src="logo2.png" alt="Veritas Logo" class="sidebar-logo">
+        </div>
+
+        <nav class="dash-nav-menu">
+            <p class="nav-section-title">Workspace</p>
+            <ul>
+                <li><a href="dashbord.html"><i class="fa-solid fa-chart-pie"></i> Staff Dashboard</a></li>
+                <li><a href="register.html"><i class="fa-solid fa-user-plus"></i> Patient Registration</a></li>
+                <li><a href="edit-patient.html"><i class="fa-solid fa-user-pen"></i> Edit / Discharge</a></li>
+                <li><a href="allocate.html"><i class="fa-solid fa-bed-pulse"></i> Greedy Allocation</a></li>
+            </ul>
+
+            <p class="nav-section-title">Hospital Data</p>
+            <ul>
+                <li class="active"><a href="view-patients.html"><i class="fa-solid fa-users-viewfinder"></i> Patient
+                        Directory</a></li>
+                <li><a href="doctorlist.html"><i class="fa-solid fa-user-doctor"></i> Present Doctors</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-logout">
+            <button id="dashboardLogoutBtn" class="logout-link"><i class="fa-solid fa-power-off"></i> Secure
+                Logout</button>
+        </div>
+    </aside>
+
+    <main class="dash-main-area">
+
+        <header class="dash-topbar">
+            <div class="topbar-left">
+                <h2>Patient Directory</h2>
+                <p>Track admitted patients, find room locations, and view live statuses.</p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="pulse-indicator">
+                    <span class="live-dot"></span> Live DB Sync
+                </div>
+
+                <div class="user-profile-dropdown">
+                    <div class="user-avatar" id="navAvatar">U</div>
+                    <div class="user-info">
+                        <span id="loggedInUserName">Fetching User...</span>
+                        <small id="loggedInUserRole">Staff Member</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dash-content">
+
+            <div class="premium-toolbar fade-in-up" style="animation-delay: 0.1s;">
+                <div class="premium-search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search by Patient Name, ID, Disease, or Phone..."
+                        autocomplete="off">
+                    <button id="clearSearchBtn" class="clear-search-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="toolbar-actions">
+                    <button class="btn outline-btn" onclick="window.location.reload()"><i
+                            class="fa-solid fa-rotate"></i> Sync Data</button>
+                    <a href="register.html" class="btn primary-btn"><i class="fa-solid fa-user-plus"></i> Admit
+                        Patient</a>
+                </div>
+            </div>
+
+            <div class="premium-table-card fade-in-up" style="animation-delay: 0.2s;">
+                <div class="table-header-row">
+                    <h3><i class="fa-solid fa-hospital-user" style="color: var(--brand-accent);"></i> Active Patient
+                        Roster</h3>
+                    <span class="premium-badge" id="totalPatientsBadge">Connecting...</span>
+                </div>
+
+                <div class="table-scroll-wrapper">
+                    <table class="premium-table" id="patientTable">
+                        <thead>
+                            <tr>
+                                <th>Patient Profile</th>
+                                <th>Contact Info</th>
+                                <th>Medical Concern</th>
+                                <th>Priority</th>
+                                <th>Location (Floor/Room)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientTableBody">
+                            <tr class="skeleton-row">
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                    <div class="skeleton-box small"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                    <div class="skeleton-box small"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                    <div class="skeleton-box small"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                </td>
+                            </tr>
+                            <tr class="skeleton-row">
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                    <div class="skeleton-box small"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                    <div class="skeleton-box small"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                    <div class="skeleton-box small"></div>
+                                </td>
+                                <td>
+                                    <div class="skeleton-box"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script type="module" src="view-script.js"></script>
+</body>
+
+</html>

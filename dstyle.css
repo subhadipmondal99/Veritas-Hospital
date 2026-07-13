@@ -1,0 +1,454 @@
+/* ========================================================
+   1. PREMIUM DESIGN TOKENS & RESET
+   ======================================================== */
+:root {
+    --brand-dark: #0b1121;
+    --brand-primary: #0284c7;
+    --brand-accent: #0ea5e9;
+    --brand-accent-glow: rgba(14, 165, 233, 0.3);
+    --surface: #ffffff;
+    --background: #f4f7fb;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    --shadow-float: 0 20px 40px -10px rgba(2, 132, 199, 0.15);
+
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-main);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Global Buttons */
+.btn {
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: none;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+    color: var(--surface);
+    box-shadow: 0 4px 15px var(--brand-accent-glow);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-float);
+    color: var(--surface);
+}
+
+/* ========================================================
+   2. PUBLIC NAVBAR & FOOTER
+   ======================================================== */
+.public-navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    transition: all 0.4s ease;
+    background: transparent;
+}
+
+.public-navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-md);
+    padding: 12px 5%;
+}
+
+.public-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--surface);
+    transition: 0.4s ease;
+}
+
+.public-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: 0.4s ease;
+}
+
+.public-navbar.scrolled .public-nav-brand {
+    color: var(--brand-dark);
+}
+
+.public-navbar.scrolled .public-logo {
+    filter: none;
+}
+
+.public-nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.public-nav-links a {
+    color: var(--surface);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.public-navbar.scrolled .public-nav-links a {
+    color: var(--text-main);
+}
+
+.public-nav-links a:hover,
+.public-nav-links .active-link {
+    color: var(--brand-accent);
+}
+
+footer {
+    background: var(--brand-dark);
+    color: #94a3b8;
+    padding: 60px 5% 30px;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 40px;
+}
+
+.footer-logo {
+    height: 50px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 15px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links h4 {
+    color: var(--surface);
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    transition: 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--surface);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Scroll Animation Global */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ========================================================
+   3. PREMIUM DEPARTMENTS PAGE
+   ======================================================== */
+
+/* Animated Hero Header */
+.dept-hero {
+    position: relative;
+    padding: 180px 5% 100px;
+    background: var(--brand-dark);
+    color: var(--surface);
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Glowing Background Orbs */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    z-index: 0;
+    animation: floatOrb 8s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    width: 350px;
+    height: 350px;
+    background: rgba(14, 165, 233, 0.2);
+    top: -50px;
+    left: -100px;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(2, 132, 199, 0.25);
+    bottom: -100px;
+    right: -50px;
+    animation-duration: 12s;
+}
+
+@keyframes floatOrb {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(40px) scale(1.1);
+    }
+}
+
+.dept-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.slider-badge {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.dept-hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.text-glow {
+    color: var(--brand-accent);
+    text-shadow: 0 0 30px rgba(14, 165, 233, 0.5);
+}
+
+.dept-hero p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+/* Interactive Department Grid */
+.departments-page-section {
+    padding: 100px 5% 120px;
+    background: var(--background);
+}
+
+.dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Premium Card Slide-Up Animation */
+.dept-card {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-bottom: 4px solid var(--brand-accent);
+    z-index: 1;
+    transition: 0.4s ease;
+}
+
+/* The color block that slides up on hover */
+.dept-card::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.dept-card-inner {
+    padding: 45px 35px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.4s ease;
+}
+
+.dept-icon {
+    font-size: 3.5rem;
+    color: var(--brand-accent);
+    margin-bottom: 25px;
+    transition: 0.4s ease;
+}
+
+.dept-title {
+    font-size: 1.6rem;
+    color: var(--brand-dark);
+    margin-bottom: 15px;
+    font-weight: 800;
+    transition: 0.4s ease;
+}
+
+.dept-desc {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+    flex-grow: 1;
+    transition: 0.4s ease;
+}
+
+.dept-link {
+    color: var(--brand-primary);
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+    font-size: 1.05rem;
+    background: #f0f9ff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    align-self: flex-start;
+}
+
+/* --- HOVER STATES --- */
+.dept-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-float);
+    border-color: transparent;
+}
+
+.dept-card:hover::before {
+    height: 100%;
+}
+
+/* Triggers slide up */
+
+/* Text colors invert to white when background slides up */
+.dept-card:hover .dept-icon {
+    color: var(--surface);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.dept-card:hover .dept-title {
+    color: var(--surface);
+}
+
+.dept-card:hover .dept-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dept-card:hover .dept-link {
+    background: var(--surface);
+    color: var(--brand-primary);
+    gap: 15px;
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* Bottom Support Banner */
+.dept-support-banner {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand-primary));
+    padding: 80px 5%;
+    text-align: center;
+    color: var(--surface);
+    position: relative;
+    margin-bottom: -50px;
+    z-index: 5;
+}
+
+.dept-support-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dept-support-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.dept-support-content p {
+    font-size: 1.15rem;
+    color: #bae6fd;
+    margin-bottom: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .public-nav-links {
+        display: none;
+    }
+
+    .dept-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dept-hero h1 {
+        font-size: 3rem;
+    }
+}

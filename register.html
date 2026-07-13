@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration | Veritas Dashboard</title>
+    <link rel="stylesheet" href="Rstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dashboard-body">
+
+    <header class="dash-header">
+        <div class="dash-brand">
+            <i class="fa-solid fa-hospital"></i> Hospital Bed Allocation Optimizer
+        </div>
+        <div class="dash-user">
+            <i class="fa-solid fa-user-shield"></i> Staff Portal Active
+            <a href="login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </header>
+
+    <main class="dash-main">
+
+        <nav class="breadcrumb">
+            <a href="dashbord.html">Dashboard</a> &gt; <span>Patient Registration</span>
+        </nav>
+
+        <div class="stepper-container">
+            <div class="step active" id="step1">
+                <div class="step-circle">1</div>
+                <span>Patient Details</span>
+            </div>
+            <div class="step-line" id="line1"></div>
+
+            <div class="step" id="step2">
+                <div class="step-circle">2</div>
+                <span>Medical Details</span>
+            </div>
+            <div class="step-line" id="line2"></div>
+
+            <div class="step" id="step3">
+                <div class="step-circle">3</div>
+                <span>Confirm</span>
+            </div>
+        </div>
+
+        <div class="registration-layout">
+
+            <div class="reg-form-container">
+                <form id="patientRegForm">
+
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-user"></i> Personal Information</h3>
+
+                        <div class="form-grid">
+                            <div class="floating-group">
+                                <input type="text" id="patientId" readonly placeholder=" ">
+                                <label for="patientId" class="static-label">Patient ID (Auto Generated)</label>
+                            </div>
+
+                            <div class="floating-group span-2">
+                                <input type="text" id="fullName" placeholder=" " required autocomplete="off">
+                                <label for="fullName">Full Name</label>
+                            </div>
+
+                            <div class="floating-group">
+                                <input type="number" id="age" placeholder=" " required>
+                                <label for="age">Age</label>
+                            </div>
+
+                            <div class="floating-group">
+                                <select id="gender" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <label for="gender">Gender</label>
+                            </div>
+
+                            <div class="floating-group span-2">
+                                <input type="tel" id="phone" placeholder=" " required>
+                                <label for="phone">Phone Number</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-truck-medical"></i> Medical Information</h3>
+                        <div class="form-grid">
+                            <div class="floating-group span-2">
+                                <input type="text" id="disease" placeholder=" " required>
+                                <label for="disease">Disease / Problem</label>
+                            </div>
+
+                            <div class="floating-group">
+                                <select id="department" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="General">General</option>
+                                    <option value="Cardiology">Cardiology</option>
+                                    <option value="Neurology">Neurology</option>
+                                    <option value="Pediatrics">Pediatrics</option>
+                                </select>
+                                <label for="department">Department</label>
+                            </div>
+
+                            <div class="floating-group">
+                                <select id="doctor">
+                                    <option value="" disabled selected></option>
+                                    <option value="Dr. Arindam Sen">Dr. Arindam Sen</option>
+                                    <option value="Dr. Sumita Banerjee">Dr. Sumita Banerjee</option>
+                                    <option value="Unassigned">Leave Unassigned</option>
+                                </select>
+                                <label for="doctor">Doctor Assigned (Optional)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> Priority Level</h3>
+                        <div class="priority-options">
+                            <label class="priority-radio critical">
+                                <input type="radio" name="priority" value="Critical" required>
+                                <span class="radio-custom"></span> Critical
+                            </label>
+                            <label class="priority-radio emergency">
+                                <input type="radio" name="priority" value="Emergency">
+                                <span class="radio-custom"></span> Emergency
+                            </label>
+                            <label class="priority-radio serious">
+                                <input type="radio" name="priority" value="Serious">
+                                <span class="radio-custom"></span> Serious
+                            </label>
+                            <label class="priority-radio normal">
+                                <input type="radio" name="priority" value="Normal">
+                                <span class="radio-custom"></span> Normal
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-bed-pulse"></i> Bed Requirement</h3>
+                        <div class="bed-cards-container">
+
+                            <label class="bed-card">
+                                <input type="radio" name="bedType" value="ICU Bed" required>
+                                <div class="bed-card-content">
+                                    <i class="fa-solid fa-heart-pulse"></i>
+                                    <span>ICU Bed</span>
+                                </div>
+                            </label>
+
+                            <label class="bed-card">
+                                <input type="radio" name="bedType" value="Emergency Bed">
+                                <div class="bed-card-content">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                    <span>Emergency Bed</span>
+                                </div>
+                            </label>
+
+                            <label class="bed-card">
+                                <input type="radio" name="bedType" value="General Bed">
+                                <div class="bed-card-content">
+                                    <i class="fa-solid fa-bed"></i>
+                                    <span>General Bed</span>
+                                </div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-calendar-check"></i> Admission Details</h3>
+                        <div class="form-grid">
+                            <div class="floating-group">
+                                <input type="date" id="adminDate" required>
+                                <label for="adminDate" class="static-label">Admission Date</label>
+                            </div>
+                            <div class="floating-group">
+                                <input type="time" id="adminTime" required>
+                                <label for="adminTime" class="static-label">Arrival Time</label>
+                            </div>
+                            <div class="floating-group span-2">
+                                <textarea id="notes" placeholder=" " rows="3"></textarea>
+                                <label for="notes">Additional Notes</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions-row">
+                        <button type="reset" id="resetRegFormBtn" class="btn outline-btn">Reset Form</button>
+                        <div class="right-actions">
+                            <a href="dashbord.html" class="btn outline-btn">Back to Dashboard</a>
+                            <button type="submit" id="submitRegBtn" class="btn submit-reg-btn"><i
+                                    class="fa-solid fa-plus"></i> Register Patient</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="reg-summary-container">
+                <div class="summary-card sticky-preview">
+                    <div class="summary-header">
+                        <h4>Patient Preview</h4>
+                        <span class="live-pulse">Live</span>
+                    </div>
+
+                    <div class="preview-block">
+                        <span class="preview-label">Name</span>
+                        <h3 id="prevName">--</h3>
+                    </div>
+
+                    <div class="preview-row">
+                        <div class="preview-block">
+                            <span class="preview-label">Age</span>
+                            <p id="prevAge">--</p>
+                        </div>
+                        <div class="preview-block">
+                            <span class="preview-label">Gender</span>
+                            <p id="prevGender">--</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-block">
+                        <span class="preview-label">Primary Concern</span>
+                        <p id="prevDisease">--</p>
+                    </div>
+
+                    <div class="preview-tags">
+                        <div class="preview-block">
+                            <span class="preview-label">Priority</span>
+                            <div id="prevPriority" class="tag tag-empty">Not Selected</div>
+                        </div>
+                        <div class="preview-block">
+                            <span class="preview-label">Bed Needed</span>
+                            <div id="prevBed" class="tag tag-empty">Not Selected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="regToast" class="reg-toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <div>
+            <h4>Registration Successful</h4>
+            <p id="regToastMsg">Patient data synced to Firebase database.</p>
+        </div>
+    </div>
+
+    <footer class="dash-footer">
+        <p>&copy; 2026 Veritas Hospital System. Developed by Subhadip Mondal | BBIIT CSE Project Submission.</p>
+    </footer>
+
+    <script type="module" src="Rscript.js"></script>
+</body>
+
+</html>

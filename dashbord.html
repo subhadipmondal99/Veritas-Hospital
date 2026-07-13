@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard | Veritas Hospital</title>
+    <link rel="stylesheet" href="dash-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dash-layout-body">
+
+    <aside class="dash-sidebar">
+        <div class="dash-sidebar-header">
+            <img src="logo2.png" alt="Veritas Logo" class="sidebar-logo">
+        </div>
+
+        <nav class="dash-nav-menu">
+            <p class="nav-section-title">Workspace</p>
+            <ul>
+                <li class="active"><a href="dashbord.html"><i class="fa-solid fa-chart-pie"></i> Staff Dashboard</a>
+                </li>
+                <li><a href="register.html"><i class="fa-solid fa-user-plus"></i> Patient Registration</a></li>
+                <li><a href="edit-patient.html"><i class="fa-solid fa-user-pen"></i> Edit / Discharge</a></li>
+                <li><a href="allocate.html"><i class="fa-solid fa-bed-pulse"></i> Greedy Allocation</a></li>
+            </ul>
+
+            <p class="nav-section-title">Hospital Data</p>
+            <ul>
+                <li><a href="view-patients.html"><i class="fa-solid fa-users-viewfinder"></i> Patient Directory</a></li>
+                <li><a href="doctorlist.html"><i class="fa-solid fa-user-doctor"></i> Present Doctors</a></li>
+                <li><a href="#" id="openReportBtn"><i class="fa-solid fa-file-invoice"></i> System Reports</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-logout">
+            <button id="dashboardLogoutBtn" class="logout-link"><i class="fa-solid fa-power-off"></i> Secure
+                Logout</button>
+        </div>
+    </aside>
+
+    <main class="dash-main-area">
+
+        <header class="dash-topbar">
+            <div class="topbar-left">
+                <h2>System Overview</h2>
+                <span class="greedy-badge"><i class="fa-solid fa-bolt"></i> Greedy Optimizer Active</span>
+            </div>
+
+            <div class="topbar-right">
+                <div class="pulse-indicator">
+                    <span class="live-dot"></span> Live DB Sync
+                </div>
+
+                <div class="user-profile-dropdown">
+                    <div class="user-avatar" id="navAvatar">U</div>
+                    <div class="user-info">
+                        <span id="loggedInUserName">Fetching User...</span>
+                        <small id="loggedInUserRole">Staff Member</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dash-content">
+
+            <div class="quick-actions-row fade-in-up" style="animation-delay: 0.1s;">
+                <a href="register.html" class="action-btn">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>PATIENT REG</span>
+                </a>
+                <a href="allocate.html" class="action-btn greedy-btn">
+                    <i class="fa-solid fa-bed-pulse"></i>
+                    <span>RUN BED ALLOCATION</span>
+                </a>
+                <a href="view-patients.html" class="action-btn outline-action">
+                    <i class="fa-solid fa-file-medical"></i>
+                    <span>VIEW PATIENT [EX]</span>
+                </a>
+                <a href="edit-patient.html" class="action-btn outline-action">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <span>PATIENT EDIT/DELETE</span>
+                </a>
+            </div>
+
+            <div class="metrics-grid fade-in-up" style="animation-delay: 0.2s;">
+                <div class="metric-card">
+                    <div class="metric-icon blue-bg"><i class="fa-solid fa-bed"></i></div>
+                    <div class="metric-data">
+                        <p>Total Capacity</p>
+                        <h3>100</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon red-bg"><i class="fa-solid fa-bed-pulse"></i></div>
+                    <div class="metric-data">
+                        <p>Occupied Beds</p>
+                        <h3 id="occupiedBedsCount">88</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon green-bg"><i class="fa-solid fa-check-to-slot"></i></div>
+                    <div class="metric-data">
+                        <p>Available Beds</p>
+                        <h3 id="emptyBedsCount">12</h3>
+                    </div>
+                </div>
+
+                <a href="doctorlist.html" class="metric-card clickable-card"
+                    title="Click to view doctors currently on duty">
+                    <div class="metric-icon teal-bg"><i class="fa-solid fa-stethoscope"></i></div>
+                    <div class="metric-data">
+                        <p>Doctors On Duty</p>
+                        <h3 id="onDutyCount">--</h3>
+                        <small class="click-hint">Click to view full roster &rarr;</small>
+                    </div>
+                </a>
+            </div>
+
+            <div class="charts-grid fade-in-up" style="animation-delay: 0.3s;">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Real-Time Bed Occupancy</h3>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="bedPieChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Greedy Allocation Efficiency</h3>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="efficiencyBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div id="presentDoctorsSection" class="recent-table-card fade-in-up" style="animation-delay: 0.4s;">
+                <div class="table-header-row">
+                    <h3><i class="fa-solid fa-user-doctor" style="color: var(--brand-accent);"></i> Currently Present
+                        Doctors <span class="table-subcount">(Top 10)</span></h3>
+                    <a href="doctorlist.html" class="btn outline-btn"
+                        style="padding: 8px 15px; font-size: 0.85rem;">View Full Roster &rarr;</a>
+                </div>
+
+                <div class="status-legend">
+                    <span><i class="dot" style="background:#10b981;"></i> On Duty</span>
+                    <span><i class="dot" style="background:#ef4444;"></i> In Surgery</span>
+                    <span><i class="dot" style="background:#d97706;"></i> On Break</span>
+                    <span><i class="dot" style="background:#94a3b8;"></i> Off Duty</span>
+                </div>
+
+                <div class="table-scroll-container">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Doctor ID</th>
+                                <th>Doctor Name</th>
+                                <th>Department</th>
+                                <th>Internal Ext.</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="presentDoctorsBody">
+                            <!-- Rendered by dash-script.js from the DOCTORS dataset (first 10 records) -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="reportModal" class="report-modal-overlay">
+        <div class="report-modal-card">
+            <div class="report-header">
+                <h2><i class="fa-solid fa-file-invoice"></i> Daily System Report</h2>
+                <button id="closeReportBtn" class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="report-body">
+                <div class="report-stat-row">
+                    <span>Total Patients Admitted Today:</span>
+                    <strong>45</strong>
+                </div>
+                <div class="report-stat-row">
+                    <span>Patients Discharged Today:</span>
+                    <strong>32</strong>
+                </div>
+                <div class="report-stat-row">
+                    <span>Greedy Algorithm Optimizations:</span>
+                    <strong class="text-good" id="minutesSavedStat">Calculating...</strong>
+                </div>
+                <div class="report-stat-row">
+                    <span>Emergency Alerts:</span>
+                    <strong style="color: #ef4444;">2 Pending</strong>
+                </div>
+                <button class="btn primary-btn print-btn" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> Print Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="dash-script.js"></script>
+</body>
+
+</html>

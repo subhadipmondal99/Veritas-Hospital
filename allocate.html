@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greedy Bed Allocation | Veritas Hospital</title>
+    <link rel="stylesheet" href="allocate_style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dash-layout-body">
+
+    <aside class="dash-sidebar">
+        <div class="dash-sidebar-header">
+            <img src="logo2.png" alt="Veritas Logo" class="sidebar-logo">
+        </div>
+
+        <nav class="dash-nav-menu">
+            <p class="nav-section-title">Workspace</p>
+            <ul>
+                <li><a href="dashbord.html"><i class="fa-solid fa-chart-pie"></i> Staff Dashboard</a></li>
+                <li><a href="register.html"><i class="fa-solid fa-user-plus"></i> Patient Registration</a></li>
+                <li><a href="edit-patient.html"><i class="fa-solid fa-user-pen"></i> Edit / Discharge</a></li>
+                <li class="active"><a href="allocate.html"><i class="fa-solid fa-bolt"></i> Greedy Allocation</a></li>
+            </ul>
+
+            <p class="nav-section-title">Hospital Data</p>
+            <ul>
+                <li><a href="view-patients.html"><i class="fa-solid fa-users-viewfinder"></i> Patient Directory</a></li>
+                <li><a href="doctorlist.html"><i class="fa-solid fa-user-doctor"></i> Present Doctors</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-logout">
+            <button id="dashboardLogoutBtn" class="logout-link"><i class="fa-solid fa-power-off"></i> Secure
+                Logout</button>
+        </div>
+    </aside>
+
+    <main class="dash-main-area">
+
+        <header class="dash-topbar">
+            <div class="topbar-left">
+                <h2>Greedy Bed Optimizer</h2>
+                <p>Run the Greedy Algorithm to automatically assign beds based on critical priority.</p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="pulse-indicator">
+                    <span class="live-dot" style="background:#eab308; box-shadow: 0 0 10px #eab308;"></span> Algorithm
+                    Standby
+                </div>
+
+                <div class="user-profile-dropdown">
+                    <div class="user-avatar" id="navAvatar">U</div>
+                    <div class="user-info">
+                        <span id="loggedInUserName">Fetching...</span>
+                        <small id="loggedInUserRole">Staff Member</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dash-content">
+
+            <div class="allocation-control-panel">
+                <div class="inventory-stats">
+                    <div class="inv-card">
+                        <span><i class="fa-solid fa-heart-pulse"></i> Available ICU</span>
+                        <h3 id="invICU">5</h3>
+                    </div>
+                    <div class="inv-card">
+                        <span><i class="fa-solid fa-truck-fast"></i> Available ER</span>
+                        <h3 id="invER">8</h3>
+                    </div>
+                    <div class="inv-card">
+                        <span><i class="fa-solid fa-bed"></i> Available General</span>
+                        <h3 id="invGen">15</h3>
+                    </div>
+                    <div class="inv-card pending-card">
+                        <span><i class="fa-solid fa-users"></i> Unallocated Patients</span>
+                        <h3 id="pendingCount">--</h3>
+                    </div>
+                </div>
+
+                <button id="runAlgorithmBtn" class="run-algo-btn">
+                    <i class="fa-solid fa-microchip"></i> EXECUTE GREEDY ALGORITHM
+                </button>
+            </div>
+
+            <div class="allocation-layout">
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="mac-btns">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <p>Greedy_Optimizer_v2.exe</p>
+                    </div>
+                    <div class="terminal-body" id="algoConsole">
+                        <p class="log-system">System initialized. Awaiting execution command...</p>
+                        <p class="log-system">Target: Firebase Firestore -> 'patients' collection</p>
+                    </div>
+                </div>
+
+                <div class="results-container">
+                    <h3><i class="fa-solid fa-clipboard-list" style="color:#00a8b5;"></i> Live Allocation Log</h3>
+                    <div class="results-scroll">
+                        <ul id="resultsList" class="results-list">
+                            <li class="empty-results">Algorithm has not been executed yet.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script type="module" src="allocate-script.js"></script>
+</body>
+
+</html>

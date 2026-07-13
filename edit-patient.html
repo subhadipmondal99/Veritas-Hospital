@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit/Discharge Patient | Veritas Hospital</title>
+    <link rel="stylesheet" href="edit-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dash-layout-body">
+
+    <aside class="dash-sidebar">
+        <div class="dash-sidebar-header">
+            <img src="logo2.png" alt="Veritas Logo" class="sidebar-logo">
+        </div>
+
+        <nav class="dash-nav-menu">
+            <p class="nav-section-title">Workspace</p>
+            <ul>
+                <li><a href="dashbord.html"><i class="fa-solid fa-chart-pie"></i> Staff Dashboard</a></li>
+                <li><a href="register.html"><i class="fa-solid fa-user-plus"></i> Patient Registration</a></li>
+                <li class="active"><a href="edit-patient.html"><i class="fa-solid fa-user-pen"></i> Edit / Discharge</a>
+                </li>
+                <li><a href="#"><i class="fa-solid fa-bed-pulse"></i> Greedy Allocation</a></li>
+            </ul>
+
+            <p class="nav-section-title">Hospital Data</p>
+            <ul>
+                <li><a href="view-patients.html"><i class="fa-solid fa-users-viewfinder"></i> Patient Directory</a></li>
+                <li><a href="doctorlist.html"><i class="fa-solid fa-user-doctor"></i> Present Doctors</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-logout">
+            <button id="dashboardLogoutBtn" class="logout-link"><i class="fa-solid fa-power-off"></i> Secure
+                Logout</button>
+        </div>
+    </aside>
+
+    <main class="dash-main-area">
+
+        <header class="dash-topbar">
+            <div class="topbar-left">
+                <h2>Patient Management</h2>
+                <p>Update medical details or discharge patients to clear database records.</p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="pulse-indicator">
+                    <span class="live-dot"></span> Live DB Sync
+                </div>
+
+                <div class="user-profile-dropdown">
+                    <div class="user-avatar" id="navAvatar">U</div>
+                    <div class="user-info">
+                        <span id="loggedInUserName">Fetching...</span>
+                        <small id="loggedInUserRole">Staff Member</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dash-content">
+
+            <div class="edit-split-layout">
+
+                <div class="edit-list-panel">
+                    <div class="edit-search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="editSearchInput" placeholder="Search patients..." autocomplete="off">
+                    </div>
+
+                    <ul class="patient-select-list" id="patientSelectList">
+                        <li class="loading-list-item"><i class="fa-solid fa-spinner fa-spin"></i> Loading Database...
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="edit-form-panel">
+
+                    <div id="noSelectionState" class="no-selection-state">
+                        <i class="fa-solid fa-hand-pointer"></i>
+                        <h3>Select a Patient</h3>
+                        <p>Search and click on a patient from the list on the left to edit their details or process a
+                            discharge.</p>
+                    </div>
+
+                    <form id="editPatientForm" style="display: none;">
+                        <div class="edit-form-header">
+                            <div>
+                                <h3><i class="fa-solid fa-pen-to-square"></i> Edit Patient Record</h3>
+                                <p id="editDisplayId" class="edit-subtext">ID: P-XXXX</p>
+                            </div>
+                            <span class="status-badge success">Active</span>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="floating-group span-2">
+                                <input type="text" id="editName" required>
+                                <label class="static-label">Full Name</label>
+                            </div>
+                            <div class="floating-group">
+                                <input type="number" id="editAge" required>
+                                <label class="static-label">Age</label>
+                            </div>
+                            <div class="floating-group">
+                                <input type="tel" id="editPhone" required>
+                                <label class="static-label">Phone Number</label>
+                            </div>
+                            <div class="floating-group span-2">
+                                <input type="text" id="editDisease" required>
+                                <label class="static-label">Disease / Problem</label>
+                            </div>
+                            <div class="floating-group">
+                                <select id="editDept" required>
+                                    <option value="General">General</option>
+                                    <option value="Cardiology">Cardiology</option>
+                                    <option value="Neurology">Neurology</option>
+                                    <option value="Pediatrics">Pediatrics</option>
+                                </select>
+                                <label class="static-label">Department</label>
+                            </div>
+                            <div class="floating-group">
+                                <select id="editDoctor">
+                                    <option value="Unassigned">Leave Unassigned</option>
+                                    <option value="Dr. Arindam Sen">Dr. Arindam Sen</option>
+                                    <option value="Dr. Sumita Banerjee">Dr. Sumita Banerjee</option>
+                                    <option value="Dr. Anjali Mitra">Dr. Anjali Mitra</option>
+                                    <option value="Dr. Rajesh Kumar">Dr. Rajesh Kumar</option>
+                                    <option value="Dr. Vikram Singh">Dr. Vikram Singh</option>
+                                    <option value="Dr. Neha Sharma">Dr. Neha Sharma</option>
+                                </select>
+                                <label class="static-label">Assigned Doctor</label>
+                            </div>
+
+                            <div class="floating-group">
+                                <select id="editPriority" required>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Serious">Serious</option>
+                                    <option value="Emergency">Emergency</option>
+                                    <option value="Critical">Critical</option>
+                                </select>
+                                <label class="static-label">Priority Level</label>
+                            </div>
+                            <div class="floating-group">
+                                <select id="editBed" required>
+                                    <option value="General Bed">General Bed</option>
+                                    <option value="Emergency Bed">Emergency Bed</option>
+                                    <option value="ICU Bed">ICU Bed</option>
+                                </select>
+                                <label class="static-label">Bed Requirement</label>
+                            </div>
+                        </div>
+
+                        <div class="edit-actions-row">
+                            <button type="button" id="dischargeBtn" class="btn danger-btn"><i
+                                    class="fa-solid fa-user-minus"></i> Discharge Patient</button>
+                            <button type="submit" id="saveEditBtn" class="btn primary-btn"><i
+                                    class="fa-solid fa-floppy-disk"></i> Save Updates</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="confirmModal" class="report-modal-overlay">
+        <div class="report-modal-card" style="max-width: 450px; text-align: center;">
+            <div
+                style="margin: 0 auto 20px; width: 60px; height: 60px; color: #ef4444; border: 2px solid #ef4444; background: rgba(239, 68, 68, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.8rem;"></i>
+            </div>
+            <h2 style="color: #0f172a; font-size: 1.4rem; font-weight: 800; margin-bottom: 10px;">Confirm Discharge</h2>
+            <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 30px; line-height: 1.5;">
+                Are you sure you want to officially discharge <strong id="confirmPatientName"
+                    style="color: #0f172a;">this patient</strong>?
+                This will permanently remove them from the active database and free their allocated bed.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button id="cancelDischargeBtn" class="btn outline-btn" style="width: 100%;">Cancel</button>
+                <button id="proceedDischargeBtn" class="btn danger-btn" style="width: 100%;">Yes, Discharge</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="unifiedToast" class="sa-toast">
+        <i id="toastIcon" class="fa-solid fa-circle-check"></i>
+        <div>
+            <h4 id="toastTitle">Success</h4>
+            <p id="toastMsg">Action completed.</p>
+        </div>
+    </div>
+
+    <script type="module" src="edit-script.js"></script>
+</body>
+
+</html>

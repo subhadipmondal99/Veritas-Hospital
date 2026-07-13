@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Control | Veritas Hospital</title>
+    <link rel="stylesheet" href="admin_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="super-admin-body">
+
+    <div id="adminLoginOverlay" class="sa-login-overlay">
+        <div class="sa-login-card reveal">
+            <div class="sa-brand-lock">
+                <img src="logo2.png" alt="Veritas Logo" class="admin-login-logo">
+            </div>
+            <h2>System Override</h2>
+            <p>Authorized Super Admin Access Required</p>
+
+            <form id="adminLoginForm" class="sa-form">
+                <div class="sa-input-group">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <input type="text" id="adminId" placeholder="Admin Identification" required autocomplete="off">
+                </div>
+                <div class="sa-input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="adminPass" placeholder="Master Protocol Password" required>
+                </div>
+                <button type="submit" class="sa-submit-btn">
+                    Authenticate Session <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </button>
+                <div id="adminError" class="sa-error-text"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminDashboard" class="sa-dashboard-layout" style="display: none;">
+
+        <aside class="sa-sidebar">
+            <div class="sa-sidebar-header">
+                <img src="logo2.png" alt="Veritas" class="sa-sidebar-logo">
+            </div>
+
+            <nav class="sa-nav">
+                <p class="sa-nav-title">Management</p>
+                <ul>
+                    <li class="active"><a href="#"><i class="fa-solid fa-user-doctor"></i> Staff Provisioning</a></li>
+                    <li><a href="#"><i class="fa-solid fa-building-user"></i> Department Config</a></li>
+                    <li><a href="#"><i class="fa-solid fa-network-wired"></i> System Architecture</a></li>
+                </ul>
+
+                <p class="sa-nav-title">Security & Logs</p>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Access Control</a></li>
+                    <li><a href="#"><i class="fa-solid fa-server"></i> Database Logs</a></li>
+                </ul>
+            </nav>
+
+            <div class="sa-sidebar-footer">
+                <div class="sa-user-info">
+                    <div class="sa-avatar">SM</div>
+                    <div class="sa-user-text">
+                        <h4>Subhadip Mondal</h4>
+                        <p>Super Administrator</p>
+                    </div>
+                </div>
+                <button id="adminLogoutBtn" class="sa-logout-btn" title="Terminate Session">
+                    <i class="fa-solid fa-power-off"></i>
+                </button>
+            </div>
+        </aside>
+
+        <main class="sa-main">
+            <header class="sa-topbar">
+                <div>
+                    <h1>Staff Provisioning Console</h1>
+                    <p>Generate and manage secure credentials for hospital personnel.</p>
+                </div>
+                <div class="sa-status-pill">
+                    <span class="pulse-dot"></span> Database Connected
+                </div>
+            </header>
+
+            <div class="sa-content-grid">
+
+                <div class="sa-card sa-form-card">
+                    <div class="sa-card-header">
+                        <h3><i class="fa-solid fa-user-plus"></i> Initialize New Employee</h3>
+                    </div>
+
+                    <form id="addStaffForm">
+                        <div class="sa-form-row">
+                            <div class="sa-floating-input">
+                                <input type="text" id="staffName" placeholder=" " required>
+                                <label>Full Legal Name</label>
+                            </div>
+                            <div class="sa-floating-input">
+                                <input type="text" id="staffEmpId" placeholder=" " required>
+                                <label>Employee ID (Login Credential)</label>
+                            </div>
+                        </div>
+
+                        <div class="sa-form-row">
+                            <div class="sa-floating-input">
+                                <input type="email" id="staffEmail" placeholder=" " required>
+                                <label>Corporate Email Address</label>
+                            </div>
+                            <div class="sa-floating-input">
+                                <input type="text" id="staffPass" placeholder=" " required>
+                                <label>Initial Secure Password</label>
+                            </div>
+                        </div>
+
+                        <div class="sa-form-row">
+                            <div class="sa-floating-input">
+                                <select id="staffRole" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="Doctor">Senior Doctor / Specialist</option>
+                                    <option value="Nurse">Nursing Staff</option>
+                                    <option value="Admin">Hospital Administrator</option>
+                                    <option value="IT">IT & Security Support</option>
+                                </select>
+                                <label>System Role / Privileges</label>
+                            </div>
+                            <div class="sa-floating-input">
+                                <select id="staffDept" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="Cardiology">Cardiology Dept.</option>
+                                    <option value="Neurology">Neurology Dept.</option>
+                                    <option value="Emergency">Emergency Response</option>
+                                    <option value="Operations">Operations & HR</option>
+                                </select>
+                                <label>Assigned Department</label>
+                            </div>
+                        </div>
+
+                        <div class="sa-form-actions">
+                            <button type="reset" class="sa-btn-outline">Clear Fields</button>
+                            <button type="submit" id="saveStaffBtn" class="sa-btn-primary">
+                                <i class="fa-solid fa-shield-check"></i> Provision Staff Credentials
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="sa-side-panel">
+                    <div class="sa-card sa-stats-card">
+                        <h3>System Overview</h3>
+                        <div class="sa-stat-row">
+                            <span>Active Personnel</span>
+                            <strong>142</strong>
+                        </div>
+                        <div class="sa-stat-row">
+                            <span>Pending Approvals</span>
+                            <strong class="text-warn">3</strong>
+                        </div>
+                        <div class="sa-stat-row">
+                            <span>Server Status</span>
+                            <strong class="text-good">Optimal</strong>
+                        </div>
+                    </div>
+
+                    <div class="sa-card sa-activity-card">
+                        <h3>Recent Provisioning</h3>
+                        <ul class="sa-activity-list" id="activityList">
+                            <li>
+                                <div class="act-icon doc-icon"><i class="fa-solid fa-stethoscope"></i></div>
+                                <div class="act-details">
+                                    <p><strong>Dr. Arindam Sen</strong> added to Cardiology</p>
+                                    <span>Today, 09:41 AM</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="act-icon nurse-icon"><i class="fa-solid fa-user-nurse"></i></div>
+                                <div class="act-details">
+                                    <p><strong>Priya Das</strong> added to Emergency</p>
+                                    <span>Yesterday, 14:20 PM</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="saToast" class="sa-toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <div>
+            <h4>Provisioning Successful</h4>
+            <p id="saToastMsg">Employee data synced to secure server.</p>
+        </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+
+</html>

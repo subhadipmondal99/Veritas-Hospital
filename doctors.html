@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors | Veritas Hospital</title>
+    <link rel="stylesheet" href="docstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="docs-page-body">
+
+    <nav class="public-navbar" id="navbar">
+        <div class="public-nav-brand">
+            <img src="logo2.png" alt="Veritas Hospital Logo" class="public-logo">
+            Veritas Hospital
+        </div>
+        <ul class="public-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li><a href="doctors.html" class="active-link">Our Doctors</a></li>
+        </ul>
+        <div class="public-nav-actions">
+            <a href="login.html" class="btn primary-btn" style="box-shadow: none;">
+                <i class="fa-solid fa-user-lock"></i> Staff Portal
+            </a>
+        </div>
+    </nav>
+
+    <header class="docs-hero">
+        <div class="docs-overlay"></div>
+        <div class="docs-hero-content reveal">
+            <span class="slider-badge">Medical Excellence</span>
+            <h1>Meet Our <br><span class="text-glow">Expert Specialists</span></h1>
+            <p>A dedicated team of world-class surgeons and physicians committed to providing you with the highest
+                standard of compassionate care.</p>
+        </div>
+    </header>
+
+    <section class="docs-directory-section">
+
+        <div class="clean-filter-bar reveal">
+            <button class="filter-btn active" data-filter="all">All Specialists</button>
+            <button class="filter-btn" data-filter="cardiology">Cardiology</button>
+            <button class="filter-btn" data-filter="neurology">Neurology</button>
+            <button class="filter-btn" data-filter="pediatrics">Pediatrics</button>
+            <button class="filter-btn" data-filter="orthopedics">Orthopedics</button>
+            <button class="filter-btn" data-filter="oncology">Oncology</button>
+        </div>
+
+        <div class="team-grid" id="doctor-grid">
+
+            <div class="doc-card reveal" data-category="cardiology">
+                <div class="doc-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Dr. Arindam Sen">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Chief Cardiologist</span>
+                    <h3>Dr. Arindam Sen</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MD, DM</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 20+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+            <div class="doc-card reveal" data-category="neurology">
+                <div class="doc-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1659353888906-adb3e0041693?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmVtYWxlJTIwZG9jdG9yfGVufDB8fDB8fHww"
+                        alt="Dr. Sumita Banerjee">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Head of Neurosurgery</span>
+                    <h3>Dr. Sumita Banerjee</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MS, MCh</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 15+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+            <div class="doc-card reveal" data-category="pediatrics">
+                <div class="doc-img-wrapper">
+                    <img src="https://i.pinimg.com/1200x/ba/72/e5/ba72e5a4323ee2f72fed02e52e250f6c.jpg"
+                        alt="Dr. Anjali Mitra">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Senior Pediatrician</span>
+                    <h3>Dr. Anjali Mitra</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MD</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 18+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+            <div class="doc-card reveal" data-category="orthopedics">
+                <div class="doc-img-wrapper">
+                    <img src="https://thumbs.dreamstime.com/b/portrait-happy-young-handsome-indian-man-doctor-smiling-studio-shot-against-white-background-137823661.jpg"
+                        alt="Dr. Rajesh Kumar">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Orthopedic Surgeon</span>
+                    <h3>Dr. Rajesh Kumar</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MS (Ortho)</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 12+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+            <div class="doc-card reveal" data-category="cardiology">
+                <div class="doc-img-wrapper">
+                    <img src="https://t4.ftcdn.net/jpg/02/69/98/99/360_F_269989951_9Gf7PWaRtrpm2EochO3D5WVn22sFZbNZ.jpg"
+                        alt="Dr. Vikram Singh">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Cardiothoracic Surgeon</span>
+                    <h3>Dr. Vikram Singh</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MS, MCh</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 14+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+            <div class="doc-card reveal" data-category="pediatrics">
+                <div class="doc-img-wrapper">
+                    <img src="https://knot9prod.s3.amazonaws.com/thumbnails/122021/hover_122021005.jpg"
+                        alt="Dr. Neha Sharma">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Neonatologist</span>
+                    <h3>Dr. Neha Sharma</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MD, Fellowship</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 10+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+            <div class="doc-card reveal" data-category="oncology">
+                <div class="doc-img-wrapper">
+                    <img src="https://thumbs.dreamstime.com/b/indian-male-doctor-25181027.jpg" alt="Dr. Siddhartha Roy">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Surgical Oncologist</span>
+                    <h3>Dr. Siddhartha Roy</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MS, Fellowship (Onco)</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 16+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+            <div class="doc-card reveal" data-category="neurology">
+                <div class="doc-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Dr. Priya Desai">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Consultant Neurologist</span>
+                    <h3>Dr. Priya Desai</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MD, DM (Neuro)</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 11+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+            <div class="doc-card reveal" data-category="orthopedics">
+                <div class="doc-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Dr. Amit Patel">
+                    <div class="doc-social-overlay">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="doc-info">
+                    <span class="doc-specialty">Joint Replacement Surgeon</span>
+                    <h3>Dr. Amit Patel</h3>
+                    <p><i class="fa-solid fa-graduation-cap"></i> MBBS, MS, Fellowship (UK)</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i> 13+ Years Experience</p>
+                    <a href="book.html" class="btn outline-btn doc-book-btn">Book Appointment</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="logo2.png" alt="Veritas Logo" class="footer-logo">
+                <p>123 Medical Boulevard,<br>Kolkata, West Bengal</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="departments.html">Departments</a>
+                <a href="login.html">Staff Portal</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Veritas Hospital. Developed by Subhadip Mondal | BBIIT CSE Project Submission.</p>
+        </div>
+    </footer>
+
+    <script src="docscript.js"></script>
+</body>
+
+</html>
