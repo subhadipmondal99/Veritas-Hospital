@@ -1,4 +1,3 @@
-// ===================== DATA =====================
 const doctors = [
   { id: "d1", name: "Dr. Ananya Sharma", dept: "Cardiology", meta: "14 yrs experience", initials: "AS" },
   { id: "d2", name: "Dr. Rohan Mehta", dept: "Neurology", meta: "11 yrs experience", initials: "RM" },
@@ -8,7 +7,6 @@ const doctors = [
   { id: "d6", name: "Dr. Siddharth Rao", dept: "General Medicine", meta: "12 yrs experience", initials: "SR" },
 ];
 
-// ===================== ELEMENTS =====================
 const doctorGrid = document.getElementById('doctorGrid');
 const doctorSelect = document.getElementById('doctorSelect');
 const departmentSelect = document.getElementById('department');
@@ -28,7 +26,6 @@ const bookAnotherBtn = document.getElementById('bookAnotherBtn');
 
 let selectedTime = null;
 
-// ===================== RENDER DOCTOR CARDS =====================
 function renderDoctorCards() {
   doctorGrid.innerHTML = doctors.map(doc => `
     <div class="doctor-card" data-id="${doc.id}">
@@ -52,22 +49,18 @@ function populateDoctorSelect(filterDept) {
     list.map(d => `<option value="${d.id}">${d.name} — ${d.dept}</option>`).join('');
 }
 
-// ===================== SELECT DOCTOR =====================
 function selectDoctor(id, scrollToForm) {
   const doc = doctors.find(d => d.id === id);
   if (!doc) return;
 
-  // sync department field
   departmentSelect.value = doc.dept;
   populateDoctorSelect(doc.dept);
   doctorSelect.value = doc.id;
 
-  // highlight card
   doctorGrid.querySelectorAll('.doctor-card').forEach(c => {
     c.classList.toggle('selected', c.dataset.id === id);
   });
 
-  // show banner
   bannerAvatar.textContent = doc.initials;
   bannerName.textContent = doc.name;
   bannerSpec.textContent = doc.dept;
@@ -84,17 +77,14 @@ clearDoctorBtn.addEventListener('click', () => {
   doctorSelect.value = "";
 });
 
-// department dropdown filters doctor list
 departmentSelect.addEventListener('change', () => {
   populateDoctorSelect(departmentSelect.value);
 });
 
-// doctor dropdown selection also highlights card + banner
 doctorSelect.addEventListener('change', () => {
   if (doctorSelect.value) selectDoctor(doctorSelect.value, false);
 });
 
-// ===================== TIME CHIPS =====================
 timeChips.forEach(chip => {
   chip.addEventListener('click', () => {
     timeChips.forEach(c => c.classList.remove('active'));
@@ -103,7 +93,6 @@ timeChips.forEach(chip => {
   });
 });
 
-// ===================== FORM SUBMIT =====================
 function generateRef() {
   const n = Math.floor(100000 + Math.random() * 900000);
   return `VRH-${n}`;
@@ -135,7 +124,6 @@ form.addEventListener('submit', (e) => {
   const doc = doctors.find(d => d.id === docId);
   const ref = generateRef();
 
-  // populate modal
   refCodeEl.textContent = `REF: ${ref}`;
   confirmDetails.innerHTML = `
     <div class="row"><span>Patient</span><span>${escapeHtml(name)}</span></div>
@@ -146,7 +134,6 @@ form.addEventListener('submit', (e) => {
     <div class="row"><span>Contact</span><span>${escapeHtml(phone)}</span></div>
   `;
 
-  // restart the checkmark draw animation
   const pcLine = document.querySelector('.pc-line');
   pcLine.style.animation = 'none';
   requestAnimationFrame(() => { pcLine.style.animation = 'pcDraw 1s ease forwards'; });
@@ -161,7 +148,6 @@ function escapeHtml(str) {
   }[s]));
 }
 
-// ===================== RESET FORM =====================
 function resetForm() {
   form.reset();
   timeChips.forEach(c => c.classList.remove('active'));
@@ -172,7 +158,6 @@ function resetForm() {
   errorNote.textContent = "";
 }
 
-// ===================== MODAL CONTROLS =====================
 function openModal() {
   modalOverlay.classList.add('show');
   document.body.style.overflow = 'hidden';
@@ -193,9 +178,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
 
-// ===================== INIT =====================
 renderDoctorCards();
 populateDoctorSelect(null);
 
-// prevent picking a past date
 document.getElementById('apptDate').min = new Date().toISOString().split('T')[0];
