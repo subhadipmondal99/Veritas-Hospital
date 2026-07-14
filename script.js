@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- 1. Public Navbar Scroll Effect ---
     const navbar = document.getElementById('navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 2. Premium Image Slider Logic ---
     const slides = document.querySelectorAll('.slide');
     const nextBtn = document.querySelector('.next-btn');
     const prevBtn = document.querySelector('.prev-btn');
@@ -22,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentSlide = 0;
         let slideInterval;
 
-        // Generate Pagination Dots dynamically
+  
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resetInterval();
     }
 
-    // --- 3. Scroll Reveal Animations ---
+    
     const reveals = document.querySelectorAll('.reveal');
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
