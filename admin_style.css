@@ -1,9 +1,5 @@
-/* ========================================================
-   12. LIGHT THEME SUPER ADMIN (super-admin.html)
-   ======================================================== */
 .super-admin-body {
     background-color: #f1f5f9;
-    /* Clean light background */
     color: #0f172a;
     font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
@@ -11,7 +7,6 @@
     overflow: hidden;
 }
 
-/* --- Clean Light Login Overlay --- */
 .sa-login-overlay {
     position: fixed;
     top: 0;
@@ -36,7 +31,6 @@
     max-width: 420px;
     text-align: center;
     box-sizing: border-box;
-    /* BUG FIX: Prevents expansion */
 }
 
 .sa-brand-lock {
@@ -89,7 +83,6 @@
     outline: none;
     transition: 0.3s;
     box-sizing: border-box;
-    /* BUG FIX: Stops inputs from popping out */
 }
 
 .sa-input-group input:focus {
@@ -130,14 +123,12 @@
     min-height: 20px;
 }
 
-/* --- Master Dashboard Layout --- */
 .sa-dashboard-layout {
     display: flex;
     height: 100vh;
     width: 100%;
 }
 
-/* Light Sidebar */
 .sa-sidebar {
     width: 280px;
     background: #ffffff;
@@ -268,7 +259,6 @@
     color: white;
 }
 
-/* Main Content Area */
 .sa-main {
     flex-grow: 1;
     display: flex;
@@ -361,7 +351,6 @@
     color: #00a8b5;
 }
 
-/* Light Mode Floating Inputs */
 .sa-form-row {
     display: flex;
     gap: 20px;
@@ -591,7 +580,6 @@
     z-index: 9999;
     transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     max-width: 350px;
-    /* Prevents blowing off screen */
     box-sizing: border-box;
 }
 
