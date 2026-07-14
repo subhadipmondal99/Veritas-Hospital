@@ -1,6 +1,4 @@
-/* ========================================================
-   1. PREMIUM DESIGN TOKENS & RESET
-   ======================================================== */
+
 :root {
     --brand-dark: #0b1121;
     --brand-primary: #0284c7;
@@ -77,9 +75,7 @@ img {
     transform: translateY(-3px);
 }
 
-/* ========================================================
-   2. PUBLIC NAVBAR (WITH PERFECTED ANIMATED LINE FIX)
-   ======================================================== */
+
 .public-body {
     background-color: var(--surface);
     color: var(--text-main);
@@ -139,7 +135,6 @@ img {
     gap: 2.5rem;
 }
 
-/* THE MAGIC UNDERLINE INDICATOR */
 .public-nav-links a {
     color: var(--surface);
     font-weight: 600;
@@ -153,7 +148,7 @@ img {
     color: var(--text-main);
 }
 
-/* The Line Itself (Positioned neatly under the text) */
+
 .public-nav-links a::after {
     content: '';
     position: absolute;
@@ -166,7 +161,7 @@ img {
     transition: width 0.3s ease;
 }
 
-/* Hover and Active State makes the line 100% wide */
+
 .public-nav-links a:hover::after,
 .public-nav-links .active-link::after {
     width: 100%;
@@ -177,9 +172,6 @@ img {
     color: var(--brand-accent);
 }
 
-/* ========================================================
-   3. PREMIUM HERO SLIDER
-   ======================================================== */
 .hero-slider {
     position: relative;
     width: 100%;
@@ -410,9 +402,7 @@ img {
     box-shadow: 0 0 10px var(--brand-accent);
 }
 
-/* ========================================================
-   4. NEW: OUR CAMPUS SECTION
-   ======================================================== */
+
 .campus-section {
     padding: 100px 5%;
     background: var(--background);
@@ -494,7 +484,7 @@ img {
     transform: scale(1.03);
 }
 
-/* Floating Emergency Badge overlay on the image */
+
 .floating-badge {
     position: absolute;
     bottom: -30px;
@@ -548,9 +538,7 @@ img {
     }
 }
 
-/* ========================================================
-   5. HOME PAGE SECTIONS
-   ======================================================== */
+
 .departments {
     padding: 100px 5%;
     background: var(--surface);
@@ -824,9 +812,7 @@ footer {
     transform: translateY(0);
 }
 
-/* ========================================================
-   6. RESPONSIVE MEDIA QUERIES
-   ======================================================== */
+
 @media (max-width: 1024px) {
     .public-nav-links {
         display: none;
