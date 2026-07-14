@@ -1,8 +1,7 @@
 // --- 1. IMPORT FIREBASE SDKS ---
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+import { initializeApp } from "https:
+import { getFirestore, collection, query, where, getDocs } from "https:
 
-// --- 2. FIREBASE CONFIGURATION ---
 const firebaseConfig = {
     apiKey: "AIzaSyB2prg8KE4NY6R-kTo8zLjPHrdrBgF22rQ",
     authDomain: "verites-hospital.firebaseapp.com",
@@ -15,11 +14,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// ==================================================================
-// 3. SHARED DOCTOR ROSTER (single source of truth)
-// Used by dashbord.html (top 10 only) and doctorlist.html (full roster).
-// status: "on-duty" | "in-surgery" | "on-break" | "off-duty"
-// ==================================================================
 const DOCTORS = [
     { id: "DOC-001", name: "Dr. Arindam Sen", dept: "Cardiology", ext: "Ext. 401", status: "on-duty" },
     { id: "DOC-002", name: "Dr. Sumita Banerjee", dept: "Neurology", ext: "Ext. 502", status: "in-surgery" },
@@ -45,18 +39,10 @@ const STATUS_META = {
     "off-duty": { label: "Off Duty", class: "off-duty" }
 };
 
-// ==================================================================
-// WEEKLY BED-ALLOCATION TIME (minutes) — Standard vs Greedy algorithm.
-// This is the one source of truth for both the efficiency chart and
-// the "Greedy Algorithm Optimizations" stat in the System Report —
-// previously that stat was a hardcoded "14 Minutes Saved" with no
-// connection to the real numbers on the page.
-// ==================================================================
 const ALLOC_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const STANDARD_ALLOC_MINUTES = [45, 50, 42, 60, 55, 30, 25];
 const GREEDY_ALLOC_MINUTES = [12, 15, 10, 18, 14, 8, 7];
 
-// Average minutes saved per day this week, rounded to the nearest whole minute.
 function computeAverageMinutesSaved() {
     const totalStandard = STANDARD_ALLOC_MINUTES.reduce((sum, m) => sum + m, 0);
     const totalGreedy = GREEDY_ALLOC_MINUTES.reduce((sum, m) => sum + m, 0);
@@ -64,8 +50,6 @@ function computeAverageMinutesSaved() {
     return Math.round(totalSaved / STANDARD_ALLOC_MINUTES.length);
 }
 
-// Fills in the report modal's "Greedy Algorithm Optimizations" line with
-// the real computed figure instead of a static placeholder.
 function updateMinutesSavedStat() {
     const el = document.getElementById("minutesSavedStat");
     if (!el) return;
@@ -88,7 +72,6 @@ function doctorRowHTML(doc) {
     </tr>`;
 }
 
-// Renders only the first 10 doctors into the dashboard's summary table
 function renderDashboardDoctorTable() {
     const tbody = document.getElementById("presentDoctorsBody");
     if (!tbody) return;
@@ -96,7 +79,6 @@ function renderDashboardDoctorTable() {
     tbody.innerHTML = top10.map(doctorRowHTML).join("");
 }
 
-// Renders the full, filterable roster on doctorlist.html
 function renderFullDoctorList(statusFilter = "all", deptFilter = "all") {
     const tbody = document.getElementById("fullDoctorListBody");
     if (!tbody) return;
@@ -115,7 +97,6 @@ function renderFullDoctorList(statusFilter = "all", deptFilter = "all") {
     if (countEl) countEl.textContent = rows.length;
 }
 
-// Populates the department <select> on doctorlist.html from the dataset
 function populateDeptFilter() {
     const select = document.getElementById("deptFilterSelect");
     if (!select) return;
@@ -128,7 +109,6 @@ function populateDeptFilter() {
     });
 }
 
-// Updates the "Doctors On Duty" metric card on the dashboard
 function updateOnDutyCount() {
     const el = document.getElementById("onDutyCount");
     if (!el) return;
@@ -138,7 +118,6 @@ function updateOnDutyCount() {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // --- Doctor roster rendering (dashboard + doctorlist page) ---
     renderDashboardDoctorTable();
     updateOnDutyCount();
     updateMinutesSavedStat();
@@ -165,7 +144,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // --- 3. FETCH LOGGED IN USER ---
     const userNameDisplay = document.getElementById('loggedInUserName');
     const userRoleDisplay = document.getElementById('loggedInUserRole');
     const navAvatar = document.getElementById('navAvatar');
@@ -196,7 +174,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (navAvatar) navAvatar.innerText = "S";
     }
 
-    // Secure Logout Action
     const dashLogout = document.getElementById('dashboardLogoutBtn');
     if (dashLogout) {
         dashLogout.addEventListener('click', () => {
@@ -205,7 +182,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // --- 4. SYSTEM REPORT MODAL ---
     const reportModal = document.getElementById('reportModal');
     const openReportBtn = document.getElementById('openReportBtn');
     const closeReportBtn = document.getElementById('closeReportBtn');
@@ -228,7 +204,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (e.target === reportModal) reportModal.style.display = 'none';
     });
 
-    // --- 5. INITIALIZE CHARTS ---
     const ctxPie = document.getElementById('bedPieChart');
     if (ctxPie) {
         new Chart(ctxPie, {
@@ -268,7 +243,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // --- 6. LIVE DATA SIMULATION ---
     const occupiedElem = document.getElementById('occupiedBedsCount');
     const emptyElem = document.getElementById('emptyBedsCount');
 
