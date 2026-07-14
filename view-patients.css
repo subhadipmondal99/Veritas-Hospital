@@ -1,6 +1,4 @@
-/* ========================================================
-   1. PREMIUM DESIGN TOKENS & RESET
-   ======================================================== */
+
 :root {
     --brand-dark: #0b1121;
     --brand-primary: #0284c7;
@@ -32,14 +30,14 @@ a {
     text-decoration: none;
 }
 
-/* CRITICAL BUG FIX: Prevents Giant Logo */
+
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Global Buttons */
+
 .btn {
     padding: 14px 28px;
     border-radius: 50px;
@@ -79,9 +77,6 @@ img {
     transform: translateY(-3px);
 }
 
-/* ========================================================
-   2. DASHBOARD CSS GRID LAYOUT
-   ======================================================== */
 .dash-layout-body {
     display: grid;
     grid-template-columns: 280px 1fr;
@@ -94,7 +89,7 @@ img {
     color: var(--text-main);
 }
 
-/* Sidebar Matches Dashboard Exactly */
+
 .dash-sidebar {
     grid-column: 1 / 2;
     height: 100vh;
@@ -164,11 +159,11 @@ img {
     background: var(--background);
 }
 
-/* --- THE VERTICAL LINE INDICATOR (ACTIVE TAB) --- */
+
 .dash-nav-menu li.active a {
     color: var(--brand-primary);
     background: #f0f9ff;
-    /* This creates the blue vertical line on the left side! */
+    
     box-shadow: inset 4px 0 0 var(--brand-primary);
 }
 
@@ -206,7 +201,7 @@ img {
     transform: translateY(-2px);
 }
 
-/* Main Content Area */
+
 .dash-main-area {
     grid-column: 2 / 3;
     height: 100vh;
@@ -340,7 +335,7 @@ img {
     width: 100%;
 }
 
-/* Animations for Load */
+
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
@@ -354,9 +349,7 @@ img {
     }
 }
 
-/* ========================================================
-   3. PREMIUM DIRECTORY TABLE & SEARCH
-   ======================================================== */
+
 .premium-toolbar {
     display: flex;
     justify-content: space-between;
@@ -506,7 +499,7 @@ img {
     cursor: pointer;
 }
 
-/* Status Badges */
+
 .severity-badge {
     padding: 6px 14px;
     border-radius: 8px;
@@ -553,7 +546,7 @@ img {
     color: #ca8a04;
 }
 
-/* Table Text Formats */
+
 .patient-id-cell {
     display: flex;
     flex-direction: column;
@@ -600,7 +593,6 @@ img {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
 }
 
-/* Error & Empty States */
 .empty-state {
     text-align: center;
     padding: 60px !important;
@@ -617,7 +609,6 @@ img {
     background: #fef2f2;
 }
 
-/* Pulse Skeleton */
 .skeleton-row td {
     padding: 25px 24px;
 }
@@ -649,9 +640,7 @@ img {
     }
 }
 
-/* ========================================================
-   4. RESPONSIVE MEDIA QUERIES
-   ======================================================== */
+
 @media (max-width: 1024px) {
     .dash-layout-body {
         display: flex;
