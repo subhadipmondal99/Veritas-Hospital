@@ -1,15 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ========================================================
-       1. ADVANCED SCROLL REVEAL (Staggered Animations)
-       ======================================================== */
     const reveals = document.querySelectorAll('.reveal');
     let delayCounter = 0;
 
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Stagger logic: add a slight delay to each card as you scroll down
                 setTimeout(() => {
                     entry.target.classList.add('active');
                 }, delayCounter * 150);
@@ -24,9 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-    /* ========================================================
-       2. PREMIUM NAVBAR SCROLL EFFECT
-       ======================================================== */
     const navbar = document.getElementById('navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
