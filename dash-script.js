@@ -1,4 +1,3 @@
-// --- 1. IMPORT FIREBASE SDKS (v12.16.0 - matches your Firebase config) ---
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
