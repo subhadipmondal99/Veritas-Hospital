@@ -78,7 +78,6 @@
             cursor: pointer;
         }
 
-        /* ---------- utility: heartbeat divider (signature motif) ---------- */
         .pulse-divider {
             width: 100%;
             height: 34px;
@@ -117,7 +116,6 @@
             }
         }
 
-        /* ---------- NAV ---------- */
         header {
             position: sticky;
             top: 0;
@@ -218,7 +216,6 @@
             display: none;
         }
 
-        /* ---------- HERO ---------- */
         .hero {
             max-width: 1180px;
             margin: 0 auto;
@@ -308,7 +305,6 @@
             }
         }
 
-        /* hero visual: floating appointment ticket */
         .hero-visual {
             position: relative;
             height: 460px;
@@ -481,7 +477,6 @@
             margin-top: 6px;
         }
 
-        /* ---------- SECTION HEADS ---------- */
         .section {
             max-width: 1180px;
             margin: 0 auto;
@@ -504,7 +499,6 @@
             font-size: 15px;
         }
 
-        /* ---------- DOCTORS ---------- */
         .doctor-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -633,7 +627,6 @@
             background: #2c9c6a;
         }
 
-        /* ---------- FORM ---------- */
         .book-section {
             background: var(--navy-deep);
             position: relative;
@@ -859,8 +852,6 @@
             width: 16px;
             height: 16px;
         }
-
-        /* ---------- WHY / FEATURES ---------- */
         .features {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -894,7 +885,6 @@
             font-size: 13px;
         }
 
-        /* ---------- FOOTER ---------- */
         footer {
             background: var(--navy-deep);
             color: #cfd9e1;
@@ -963,7 +953,6 @@
             padding-top: 20px;
         }
 
-        /* ---------- CONFIRMATION MODAL ---------- */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -1120,7 +1109,6 @@
             background: var(--teal);
         }
 
-        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 920px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -1187,7 +1175,6 @@
 
 <body>
 
-    <!-- ================= NAV ================= -->
     <header>
         <div class="nav-wrap">
             <div class="brand">
@@ -1208,7 +1195,6 @@
         </div>
     </header>
 
-    <!-- ================= HERO ================= -->
     <section class="hero">
         <div>
             <span class="eyebrow">Veritas Hospital · Appointments</span>
@@ -1226,14 +1212,6 @@
             <div class="orb orb1"></div>
             <div class="orb orb2"></div>
             <div class="ticket">
-                <!-- <div class="ticket-top">
-                    <div>
-                        <div class="ticket-tag">Upcoming Visit</div>
-                        <div class="ticket-doc">Dr. Ananya Sharma</div>
-                        <p class="ticket-role">Cardiology</p>
-                    </div>
-                    <div class="ticket-avatar">AS</div>
-                </div> -->
                 <hr class="ticket-divider">
                 <div class="ticket-row"><span>Date</span><span>Today, 4:30 PM</span></div>
                 <div class="ticket-row"><span>Room</span><span>Cardiac Wing · 2B</span></div>
@@ -1252,8 +1230,6 @@
             <path class="pulse-line" d="M0,17 L520,17 L545,4 L570,30 L595,17 L1180,17" />
         </svg>
     </div>
-
-    <!-- ================= DOCTORS ================= -->
     <section class="section" id="doctors">
         <div class="section-head">
             <span class="eyebrow">Meet Our Specialists</span>
@@ -1261,11 +1237,8 @@
             <p>Tap a doctor to instantly add them to your appointment form below.</p>
         </div>
         <div class="doctor-grid" id="doctorGrid">
-            <!-- doctor cards injected by JS -->
         </div>
     </section>
-
-    <!-- ================= BOOKING FORM ================= -->
     <section class="book-section" id="book">
         <div class="book-wrap">
             <div class="book-head">
@@ -1357,8 +1330,6 @@
             </form>
         </div>
     </section>
-
-    <!-- ================= WHY US ================= -->
     <section class="section" id="why">
         <div class="section-head">
             <span class="eyebrow">Why Choose Veritas</span>
@@ -1401,8 +1372,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ================= FOOTER ================= -->
     <footer id="contact">
         <div class="foot-wrap">
             <div class="foot-brand">
@@ -1428,8 +1397,6 @@
         </div>
         <div class="copyright">© 2026 Veritas Hospital. Where care meets trust.</div>
     </footer>
-
-    <!-- ================= CONFIRMATION MODAL ================= -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="confirm-card">
             <div class="pulse-check">
