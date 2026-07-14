@@ -1,8 +1,7 @@
-// --- 1. IMPORT FIREBASE SDKS ---
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-// --- 2. FIREBASE CONFIGURATION ---
 const firebaseConfig = {
     apiKey: "AIzaSyB2prg8KE4NY6R-kTo8zLjPHrdrBgF22rQ",
     authDomain: "verites-hospital.firebaseapp.com",
@@ -17,16 +16,14 @@ const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- 3. STRICT NUMBER-ONLY VALIDATION FOR EMPLOYEE ID ---
     const empIdInput = document.getElementById('employeeId');
     if (empIdInput) {
         empIdInput.addEventListener('input', function () {
-            // This instantly removes anything that is NOT a digit (0-9)
+           
             this.value = this.value.replace(/\D/g, '');
         });
     }
 
-    // --- 4. PASSWORD VISIBILITY TOGGLE ---
     const toggleBtn = document.getElementById('toggleBtn');
     const passwordInput = document.getElementById('password');
 
@@ -40,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 5. FIREBASE LOGIN AUTHENTICATION LOGIC ---
     const corpLoginForm = document.getElementById('corpLoginForm');
     const loginError = document.getElementById('loginError');
     const submitBtn = document.getElementById('loginSubmitBtn');
@@ -73,10 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         const staffData = doc.data();
 
                         if (staffData.password === enteredPass) {
-                            // PASSWORD MATCHES!
+                            
                             userFound = true;
 
-                            // SAVE THE UNIQUE EMPLOYEE ID TO FETCH ON THE DASHBOARD
                             localStorage.setItem("activeVeritasUser", staffData.employeeId);
 
                             submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Access Granted';
