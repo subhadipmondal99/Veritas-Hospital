@@ -1,8 +1,7 @@
-// --- 1. IMPORT FIREBASE SDKS ---
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-// --- 2. FIREBASE CONFIGURATION ---
 const firebaseConfig = {
     apiKey: "AIzaSyB2prg8KE4NY6R-kTo8zLjPHrdrBgF22rQ",
     authDomain: "verites-hospital.firebaseapp.com",
@@ -17,7 +16,7 @@ const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // --- 1. SET LOGGED IN USER DATA ---
+
     const userNameDisplay = document.getElementById('loggedInUserName');
     const userRoleDisplay = document.getElementById('loggedInUserRole');
     const navAvatar = document.getElementById('navAvatar');
@@ -45,13 +44,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (navAvatar) navAvatar.innerText = "S";
     }
 
-    // Logout Functionality
+    
     document.getElementById('dashboardLogoutBtn').addEventListener('click', () => {
         localStorage.clear();
         window.location.href = "login.html";
     });
 
-    // --- 2. FETCH & RENDER PATIENT DATA ---
+    
     const tbody = document.getElementById('patientTableBody');
     const totalBadge = document.getElementById('totalPatientsBadge');
 
@@ -137,7 +136,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         totalBadge.innerText = "Connection Error";
     }
 
-    // --- 3. MODERN LIVE SEARCH LOGIC ---
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
 
