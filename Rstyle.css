@@ -1,6 +1,3 @@
-/* ========================================================
-   1. GLOBAL VARIABLES, RESET & TYPOGRAPHY
-   ======================================================== */
 :root {
    --primary: #0284c7;
    --primary-dark: #0369a1;
@@ -18,7 +15,7 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   /* Critical: Prevents layout breaking */
+
    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
@@ -33,7 +30,6 @@ html {
    scroll-behavior: smooth;
 }
 
-/* Global Scroll Reveal Animation */
 .reveal {
    opacity: 0;
    transform: translateY(50px);
@@ -45,9 +41,6 @@ html {
    transform: translateY(0);
 }
 
-/* ========================================================
-   2. GLOBAL NAVIGATION BAR & BUTTONS
-   ======================================================== */
 .navbar {
    position: fixed;
    width: 100%;
@@ -113,7 +106,6 @@ html {
    padding-bottom: 2px;
 }
 
-/* Global Buttons */
 .btn {
    padding: 10px 22px;
    border-radius: 50px;
@@ -172,9 +164,7 @@ html {
    transform: translateY(-2px);
 }
 
-/* ========================================================
-   3. GLOBAL FOOTER
-   ======================================================== */
+
 footer {
    background: var(--veritas-navy);
    color: #94a3b8;
@@ -237,9 +227,6 @@ footer {
    color: #64748b;
 }
 
-/* ========================================================
-   4. HOMEPAGE & GENERAL HERO SECTIONS
-   ======================================================== */
 .hero {
    min-height: 100vh;
    display: flex;
@@ -309,9 +296,6 @@ footer {
    margin-bottom: 40px;
 }
 
-/* ========================================================
-   5. STAFF LOGIN PAGE (login.html)
-   ======================================================== */
 .corporate-body {
    background-color: #e2e8f0;
    min-height: 100vh;
@@ -511,9 +495,6 @@ input::-ms-clear {
    min-height: 20px;
 }
 
-/* ========================================================
-   6. EMPLOYEE DASHBOARD (dashbord.html)
-   ======================================================== */
 .dash-layout-body {
    display: flex;
    height: 100vh;
@@ -783,7 +764,6 @@ input::-ms-clear {
    background: #ffffff;
 }
 
-/* Metrics & Charts */
 .metrics-grid {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -912,7 +892,7 @@ input::-ms-clear {
    justify-content: center;
 }
 
-/* Doctors Table */
+
 #presentDoctorsSection {
    scroll-margin-top: 100px;
 }
@@ -1003,7 +983,6 @@ input::-ms-clear {
    border-color: #fef08a;
 }
 
-/* System Report Modal */
 .report-modal-overlay {
    position: fixed;
    top: 0;
@@ -1108,9 +1087,7 @@ input::-ms-clear {
    background: #00a8b5;
 }
 
-/* ========================================================
-   7. PATIENT REGISTRATION (register.html)
-   ======================================================== */
+
 .dashboard-body {
    background-color: #f1f5f9;
    color: #0f172a;
@@ -1172,7 +1149,6 @@ input::-ms-clear {
    font-weight: 700;
 }
 
-/* Slim Sticky Progress Bar */
 .stepper-container {
    display: flex;
    align-items: center;
@@ -1252,7 +1228,6 @@ input::-ms-clear {
    background: #0284c7 !important;
 }
 
-/* Grid layout with items aligned to start for stickiness */
 .registration-layout {
    display: grid;
    grid-template-columns: 2fr 1fr;
@@ -1554,7 +1529,6 @@ input::-ms-clear {
    transform: translateY(-4px);
 }
 
-/* Sticky Patient Preview Card */
 .sticky-preview {
    position: sticky;
    top: 160px;
@@ -1729,7 +1703,6 @@ input::-ms-clear {
    border-color: rgba(56, 189, 248, 0.3);
 }
 
-/* Registration Success Toast */
 .reg-toast {
    position: fixed;
    bottom: -100px;
@@ -1772,9 +1745,6 @@ input::-ms-clear {
    line-height: 1.3;
 }
 
-/* ========================================================
-   8. LIGHT THEME SUPER ADMIN (super-admin.html)
-   ======================================================== */
 .super-admin-body {
    background-color: #f1f5f9;
    color: #0f172a;
@@ -2371,9 +2341,6 @@ input::-ms-clear {
    line-height: 1.3;
 }
 
-/* ========================================================
-   9. RESPONSIVE MEDIA QUERIES
-   ======================================================== */
 @media (max-width: 1024px) {
    .hero {
       background: url('doc.png') no-repeat center right;
