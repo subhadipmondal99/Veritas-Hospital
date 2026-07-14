@@ -1,18 +1,11 @@
-/* ========================================================
-   12. ULTRA-PREMIUM SUPER ADMIN (super-admin.html)
-   ======================================================== */
 .super-admin-body {
     background-color: #020617;
-    /* Ultra dark background */
     color: #e2e8f0;
     font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    /* App-like feel, no page scroll */
 }
-
-/* --- High Security Login Overlay --- */
 .sa-login-overlay {
     position: fixed;
     top: 0;
@@ -128,14 +121,12 @@
     min-height: 20px;
 }
 
-/* --- Master Dashboard Layout --- */
 .sa-dashboard-layout {
     display: flex;
     height: 100vh;
     width: 100%;
 }
 
-/* Sidebar */
 .sa-sidebar {
     width: 280px;
     background: #0f172a;
@@ -273,7 +264,6 @@
     color: white;
 }
 
-/* Main Content Area */
 .sa-main {
     flex-grow: 1;
     display: flex;
@@ -344,7 +334,6 @@
     gap: 30px;
 }
 
-/* Form Card */
 .sa-card {
     background: #0f172a;
     border: 1px solid #1e293b;
@@ -372,7 +361,6 @@
     color: #06b6d4;
 }
 
-/* Dark Mode Floating Inputs */
 .sa-form-row {
     display: flex;
     gap: 20px;
@@ -481,7 +469,6 @@
     transform: none;
 }
 
-/* Side Panels */
 .sa-side-panel {
     display: flex;
     flex-direction: column;
@@ -577,7 +564,6 @@
     font-size: 0.75rem;
 }
 
-/* Toast Notification */
 .sa-toast {
     position: fixed;
     bottom: -100px;
