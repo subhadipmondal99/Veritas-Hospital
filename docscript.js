@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ========================================================
-       1. GLOBAL SCROLL REVEAL
-       ======================================================== */
     const reveals = document.querySelectorAll('.reveal');
     let delayCounter = 0;
 
@@ -24,9 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         reveals.forEach(reveal => revealOnScroll.observe(reveal));
     }
 
-    /* ========================================================
-       2. PREMIUM NAVBAR SHADOW ON SCROLL
-       ======================================================== */
     const navbar = document.getElementById('navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
@@ -35,9 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* ========================================================
-       3. DOCTORS DIRECTORY FILTER (Premium Smooth Filter)
-       ======================================================== */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const doctorCards = document.querySelectorAll('.doc-card');
 
@@ -45,19 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
 
-                // Manage Button Active State
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
                 const filterValue = btn.getAttribute('data-filter');
 
-                // Filter Cards Safely with animation reset
                 doctorCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
 
                     if (filterValue === 'all' || filterValue === cardCategory) {
                         card.classList.remove('hide');
-                        // Quick animation re-trigger for smooth pop-in
                         card.classList.remove('active');
                         setTimeout(() => card.classList.add('active'), 20);
                     } else {
