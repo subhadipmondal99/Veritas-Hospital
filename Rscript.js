@@ -1,8 +1,6 @@
-// --- 1. IMPORT FIREBASE SDKS ---
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-// --- 2. FIREBASE CONFIGURATION ---
 const firebaseConfig = {
     apiKey: "AIzaSyB2prg8KE4NY6R-kTo8zLjPHrdrBgF22rQ",
     authDomain: "verites-hospital.firebaseapp.com",
@@ -12,23 +10,18 @@ const firebaseConfig = {
     appId: "1:458115728730:web:e8470d1e8ab84c3a015f63"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- HELPER: Auto Generate Patient ID ---
     const patientIdInput = document.getElementById('patientId');
     function generatePatientId() {
-        const randomNum = Math.floor(1000 + Math.random() * 9000); // 4 digit random number
+        const randomNum = Math.floor(1000 + Math.random() * 9000);
         if (patientIdInput) patientIdInput.value = `P-${randomNum}`;
     }
-    generatePatientId(); // Run on load
+    generatePatientId();
 
-    /* ========================================================
-       REGISTRATION PROGRESS & LIVE PREVIEW
-       ======================================================== */
     const fullNameInput = document.getElementById('fullName');
     const ageInput = document.getElementById('age');
     const genderSelect = document.getElementById('gender');
@@ -40,20 +33,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const bedRadios = document.querySelectorAll('input[name="bedType"]');
 
     if (fullNameInput) {
-        // Text animation helper
         function animateValue(targetId, newValue) {
             const targetEl = document.getElementById(targetId);
             if (targetEl.textContent !== newValue) {
                 targetEl.textContent = newValue;
                 targetEl.classList.remove('pop-anim');
-                void targetEl.offsetWidth; // Force reflow
+                void targetEl.offsetWidth;
                 targetEl.classList.add('pop-anim');
             }
         }
 
-        // --- BULLETPROOF STEPPER LOGIC ---
         function checkFormProgress() {
-            // Step 1 Check: Are all Personal Details filled?
             const sec1Filled = fullNameInput.value.trim() !== '' &&
                 ageInput.value.trim() !== '' &&
                 genderSelect.value !== '' &&
@@ -69,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 step1.querySelector('.step-circle').innerHTML = '1';
             }
 
-            // Step 2 Check: Are Medical Details filled?
             const priorityChecked = document.querySelector('input[name="priority"]:checked');
             const sec2Filled = diseaseInput.value.trim() !== '' &&
                 deptSelect.value !== '' &&
@@ -78,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const step2 = document.getElementById('step2');
             const line1 = document.getElementById('line1');
 
-            // Only unlock Step 2 if Step 1 is ALSO finished
             if (sec2Filled && sec1Filled) {
                 step2.classList.add('completed');
                 step2.querySelector('.step-circle').innerHTML = '<i class="fa-solid fa-check"></i>';
@@ -90,11 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Attach listeners for preview and stepper to EVERYTHING
         const allInputs = [fullNameInput, ageInput, genderSelect, phoneInput, diseaseInput, deptSelect];
         allInputs.forEach(input => {
             input.addEventListener('input', checkFormProgress);
-            input.addEventListener('change', checkFormProgress); // Catches dropdown selections
+            input.addEventListener('change', checkFormProgress);
         });
 
         fullNameInput.addEventListener('input', (e) => animateValue('prevName', e.target.value || '--'));
@@ -118,17 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 prevBed.textContent = e.target.value;
                 prevBed.className = 'tag tag-Bed pop-anim';
 
-                // Light up Step 3
                 document.getElementById('step3').classList.add('completed');
                 document.getElementById('step3').querySelector('.step-circle').innerHTML = '<i class="fa-solid fa-check"></i>';
                 document.getElementById('line2').classList.add('line-active');
             });
         });
 
-        // Helper to Reset entirely
         function fullyResetForm() {
             document.getElementById('patientRegForm').reset();
-            generatePatientId(); // Generate a new ID for the next patient
+            generatePatientId();
 
             ['prevName', 'prevAge', 'prevGender', 'prevDisease'].forEach(id => animateValue(id, '--'));
 
@@ -147,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll('.step-line').forEach(line => line.classList.remove('line-active'));
         }
 
-        // Attach to the Reset Button
+
         const resetBtn = document.getElementById('resetRegFormBtn');
         if (resetBtn) {
             resetBtn.addEventListener('click', (e) => {
@@ -156,9 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        /* ========================================================
-           FIREBASE DATABASE SUBMISSION LOGIC
-           ======================================================== */
         const submitBtn = document.getElementById('submitRegBtn');
         const regToast = document.getElementById('regToast');
         const regToastMsg = document.getElementById('regToastMsg');
@@ -166,18 +148,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('patientRegForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Show Loading State
             const originalBtnHtml = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving to Database...';
             submitBtn.disabled = true;
 
-            // Gather values securely
             const priorityInput = document.querySelector('input[name="priority"]:checked');
             const bedInput = document.querySelector('input[name="bedType"]:checked');
             const pName = fullNameInput.value;
             const pId = patientIdInput.value;
 
-            // Build Data Object
             const patientData = {
                 patientId: pId,
                 fullName: pName,
@@ -193,21 +172,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 arrivalTime: document.getElementById('adminTime').value,
                 notes: document.getElementById('notes').value || "",
                 status: "Pending Allocation",
-                registeredAt: serverTimestamp() // Official Firebase time
+                registeredAt: serverTimestamp()
             };
 
             try {
-                // Send to Firebase "patients" collection
                 await addDoc(collection(db, "patients"), patientData);
 
-                // Show Success Toast
                 regToastMsg.textContent = `${pName} (${pId}) has been successfully registered to the database.`;
                 regToast.classList.add('show');
 
-                // Hide Toast after 4 seconds
                 setTimeout(() => { regToast.classList.remove('show'); }, 4000);
 
-                // Clear the form
                 fullyResetForm();
 
             } catch (error) {
@@ -219,7 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert("CRITICAL ERROR: Could not save patient to database. Check your internet connection.");
                 }
             } finally {
-                // Restore Button
                 submitBtn.innerHTML = originalBtnHtml;
                 submitBtn.disabled = false;
             }
