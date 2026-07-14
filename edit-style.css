@@ -1,6 +1,3 @@
-/* ========================================================
-   1. GLOBAL VARIABLES, RESET & TYPOGRAPHY
-   ======================================================== */
 :root {
     --primary: #0284c7;
     --primary-dark: #0369a1;
@@ -36,7 +33,6 @@ a {
     text-decoration: none;
 }
 
-/* Global Buttons */
 .btn {
     padding: 10px 22px;
     border-radius: 50px;
@@ -82,10 +78,6 @@ a {
     border-color: var(--veritas-navy);
     transform: translateY(-2px);
 }
-
-/* ========================================================
-   2. SHARED DASHBOARD LAYOUT (BULLETPROOF)
-   ======================================================== */
 .dash-layout-body {
     display: flex;
     height: 100vh;
@@ -97,11 +89,9 @@ a {
     padding: 0;
 }
 
-/* Bulletproof Sidebar CSS */
 .dash-sidebar {
     width: 260px;
     min-width: 260px;
-    /* Absolutely prevents squishing */
     flex-shrink: 0;
     background: #ffffff;
     border-right: 1px solid #e2e8f0;
@@ -121,7 +111,6 @@ a {
     height: 85px;
 }
 
-/* Logo Bug Fix: Hard locks the logo height so it never breaks layout */
 .sidebar-logo {
     max-width: 100%;
     height: 45px !important;
@@ -205,7 +194,6 @@ a {
     color: white;
 }
 
-/* Main Content Area */
 .dash-main-area {
     flex-grow: 1;
     display: flex;
@@ -329,9 +317,6 @@ a {
     padding: 30px 40px;
 }
 
-/* ========================================================
-   3. EDIT / DISCHARGE PATIENTS (edit-patient.html)
-   ======================================================== */
 .edit-split-layout {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -340,7 +325,6 @@ a {
     height: calc(100vh - 160px);
 }
 
-/* Left Panel: Search & List */
 .edit-list-panel {
     background: #ffffff;
     border-radius: 16px;
@@ -439,7 +423,6 @@ a {
     font-weight: 600;
 }
 
-/* Right Panel: Edit Form */
 .edit-form-panel {
     background: #ffffff;
     border-radius: 16px;
@@ -501,7 +484,6 @@ a {
     margin-top: 5px;
 }
 
-/* Override Floating inputs specifically for Edit Page */
 .edit-form-panel .floating-group input,
 .edit-form-panel .floating-group select {
     background: #ffffff;
@@ -531,7 +513,6 @@ a {
     border-color: #ef4444;
 }
 
-/* Unified Global Toast Notification */
 .sa-toast {
     position: fixed;
     bottom: -100px;
@@ -573,9 +554,6 @@ a {
     line-height: 1.3;
 }
 
-/* ========================================================
-   4. MODERN PATIENT DIRECTORY (view-patients.html)
-   ======================================================== */
 .modern-toolbar {
     display: flex;
     justify-content: space-between;
@@ -746,7 +724,6 @@ a {
     margin-top: 4px;
 }
 
-/* Status Badges */
 .severity-badge {
     padding: 4px 10px;
     border-radius: 6px;
@@ -791,7 +768,6 @@ a {
     border-color: #fef08a;
 }
 
-/* Skeletons */
 .skeleton-row td {
     padding: 20px;
 }
@@ -823,9 +799,6 @@ a {
     }
 }
 
-/* ========================================================
-   5. STAFF DASHBOARD & CHARTS (dashbord.html)
-   ======================================================== */
 .quick-actions-row {
     display: flex;
     gap: 20px;
@@ -953,7 +926,6 @@ a {
     padding-bottom: 15px;
 }
 
-/* Modal */
 .report-modal-overlay {
     position: fixed;
     top: 0;
@@ -1007,9 +979,6 @@ a {
     font-size: 0.95rem;
 }
 
-/* ========================================================
-   6. REGISTRATION FORM W/ PREVIEW (register.html)
-   ======================================================== */
 .stepper-container {
     display: flex;
     align-items: center;
@@ -1170,7 +1139,6 @@ a {
     background: white !important;
 }
 
-/* Sticky Patient Preview */
 .sticky-preview {
     position: sticky;
     top: 120px;
@@ -1217,15 +1185,11 @@ a {
     margin-bottom: 6px;
 }
 
-/* ========================================================
-   7. RESPONSIVE MEDIA QUERIES (Mobile Fixes)
-   ======================================================== */
 @media (max-width: 1024px) {
     .dash-sidebar {
         display: none;
     }
 
-    /* Hides sidebar on small screens */
     .registration-layout {
         grid-template-columns: 1fr;
     }
