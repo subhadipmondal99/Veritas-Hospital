@@ -1,6 +1,4 @@
-/* ========================================================
-   1. PREMIUM DESIGN TOKENS & RESET
-   ======================================================== */
+
 :root {
     --brand-dark: #0b1121;
     --brand-primary: #0284c7;
@@ -34,9 +32,6 @@ img {
     display: block;
 }
 
-/* ========================================================
-   2. PREMIUM CORPORATE LOGIN (login.html)
-   ======================================================== */
 .corporate-body {
     background-color: var(--background);
     min-height: 100vh;
@@ -71,7 +66,7 @@ img {
     overflow: hidden;
 }
 
-/* Premium Glow Effect behind text */
+
 .corp-left-panel::before {
     content: '';
     position: absolute;
@@ -153,7 +148,6 @@ img {
     font-weight: 600;
 }
 
-/* Right Panel - With Fixed Stethoscope Background */
 .corp-right-panel {
     flex: 1.2;
     padding: 60px 80px;
@@ -319,9 +313,6 @@ input::-ms-clear {
 }
 
 
-/* ========================================================
-   3. RESPONSIVE QUERIES
-   ======================================================== */
 @media (max-width: 900px) {
     .corp-login-container {
         flex-direction: column;
