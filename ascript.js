@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ========================================================
-       1. GLOBAL SCROLL REVEAL (Homepage & Sub-pages)
-       ======================================================== */
     const reveals = document.querySelectorAll('.reveal');
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -15,9 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-    /* ========================================================
-       2. NAVBAR SHADOW ON SCROLL
-       ======================================================== */
     const navbar = document.getElementById('navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
@@ -26,9 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* ========================================================
-       3. LOGIN PAGE PASSWORD TOGGLE (login.html)
-       ======================================================== */
     const toggleBtn = document.getElementById('toggleBtn');
     const passwordInput = document.getElementById('password');
 
@@ -42,8 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
             icon.classList.toggle('fa-eye-slash');
         });
     }
-
-    // Simulate Login Form submission
     const corpLoginForm = document.getElementById('corpLoginForm');
     if (corpLoginForm) {
         corpLoginForm.addEventListener('submit', (e) => {
@@ -57,9 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* ========================================================
-       4. REGISTRATION PROGRESS & LIVE PREVIEW (register.html)
-       ======================================================== */
     const fullNameInput = document.getElementById('fullName');
     const ageInput = document.getElementById('age');
     const genderSelect = document.getElementById('gender');
@@ -71,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const bedRadios = document.querySelectorAll('input[name="bedType"]');
 
     if (fullNameInput) {
-        // Text animation helper
         function animateValue(targetId, newValue) {
             const targetEl = document.getElementById(targetId);
             if (targetEl.textContent !== newValue) {
@@ -82,9 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Stepper checking logic
         function checkFormProgress() {
-            // Step 1: Personal
             const sec1Filled = fullNameInput.value && ageInput.value && genderSelect.value && phoneInput.value;
             const step1 = document.getElementById('step1');
             if (sec1Filled) {
@@ -95,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 step1.querySelector('.step-circle').innerHTML = '1';
             }
 
-            // Step 2: Medical & Priority
             const priorityChecked = document.querySelector('input[name="priority"]:checked');
             const sec2Filled = diseaseInput.value && deptSelect.value && priorityChecked;
             const step2 = document.getElementById('step2');
@@ -112,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Attach listeners for preview and stepper
         [fullNameInput, ageInput, genderSelect, phoneInput, diseaseInput, deptSelect].forEach(input => {
             input.addEventListener('input', () => checkFormProgress());
         });
@@ -138,27 +119,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 prevBed.textContent = e.target.value;
                 prevBed.className = 'tag tag-Bed pop-anim';
 
-                // Light up Step 3
                 document.getElementById('step3').classList.add('completed');
                 document.getElementById('step3').querySelector('.step-circle').innerHTML = '<i class="fa-solid fa-check"></i>';
                 document.getElementById('line2').classList.add('line-active');
             });
         });
 
-        // Form Submit
         document.getElementById('patientRegForm').addEventListener('submit', (e) => {
             e.preventDefault();
             alert("Patient Successfully Registered to Veritas Hospital System!");
             e.target.reset();
 
-            // Reset Preview Card
             ['prevName', 'prevAge', 'prevGender', 'prevDisease'].forEach(id => animateValue(id, '--'));
             document.getElementById('prevPriority').className = 'tag tag-empty';
             document.getElementById('prevPriority').textContent = 'Not Selected';
             document.getElementById('prevBed').className = 'tag tag-empty';
             document.getElementById('prevBed').textContent = 'Not Selected';
 
-            // Reset Stepper
             document.querySelectorAll('.step').forEach(step => step.classList.remove('completed'));
             document.getElementById('step1').querySelector('.step-circle').innerHTML = '1';
             document.getElementById('step2').querySelector('.step-circle').innerHTML = '2';
