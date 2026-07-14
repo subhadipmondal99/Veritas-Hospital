@@ -1,8 +1,5 @@
-// --- IMPORT FIREBASE SDKS ---
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-
-// --- FIREBASE CONFIGURATION ---
 const firebaseConfig = {
     apiKey: "AIzaSyB2prg8KE4NY6R-kTo8zLjPHrdrBgF22rQ",
     authDomain: "verites-hospital.firebaseapp.com",
@@ -12,13 +9,12 @@ const firebaseConfig = {
     appId: "1:458115728730:web:e8470d1e8ab84c3a015f63"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- 1. SUPER ADMIN LOGIN LOGIC ---
+
     const loginOverlay = document.getElementById('adminLoginOverlay');
     const adminDashboard = document.getElementById('adminDashboard');
     const adminLoginForm = document.getElementById('adminLoginForm');
@@ -31,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const id = document.getElementById('adminId').value;
             const pass = document.getElementById('adminPass').value;
 
-            // Authentication Check
+
             if (id === 'i am subhadip' && pass === '321intel') {
                 const btn = adminLoginForm.querySelector('button');
                 btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Decrypting Protocol...';
@@ -49,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Logout Logic
+
     if (adminLogoutBtn) {
         adminLogoutBtn.addEventListener('click', () => {
             adminDashboard.style.display = 'none';
@@ -61,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 2. DATABASE PROVISIONING LOGIC (FIRESTORE) ---
+
     const addStaffForm = document.getElementById('addStaffForm');
     const saveStaffBtn = document.getElementById('saveStaffBtn');
     const saToast = document.getElementById('saToast');
@@ -92,15 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             try {
-                // IMPORTANT: Adding data to Firebase
                 await addDoc(collection(db, "staff"), staffData);
 
-                // Show Fixed Toast Notification
                 saToastMsg.textContent = `${name} (${empId}) has been securely added to the system.`;
                 saToast.classList.add('show');
                 setTimeout(() => { saToast.classList.remove('show'); }, 4000);
 
-                // Update "Recent Activity" UI dynamically
                 const newLi = document.createElement('li');
                 newLi.innerHTML = `
                     <div class="act-icon new-icon"><i class="fa-solid fa-user-check"></i></div>
@@ -115,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } catch (error) {
                 console.error("Firebase Error Detail: ", error);
 
-                // BUG CATCHER: Tell you if Firebase Rules are blocking it
                 if (error.code === 'permission-denied') {
                     alert("FIREBASE ERROR: Permission Denied. You need to update your Firestore Security Rules in the Firebase Console to allow writes!");
                 } else {
