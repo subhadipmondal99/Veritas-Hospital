@@ -1,8 +1,6 @@
-// --- 1. IMPORT FIREBASE SDKS ---
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc, query, where } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-// --- 2. FIREBASE CONFIGURATION ---
 const firebaseConfig = {
     apiKey: "AIzaSyB2prg8KE4NY6R-kTo8zLjPHrdrBgF22rQ",
     authDomain: "verites-hospital.firebaseapp.com",
@@ -17,7 +15,6 @@ const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // --- 1. SECURE USER FETCH ---
     const userNameDisplay = document.getElementById('loggedInUserName');
     const userRoleDisplay = document.getElementById('loggedInUserRole');
     const navAvatar = document.getElementById('navAvatar');
@@ -52,15 +49,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         localStorage.removeItem("activeVeritasUser");
         window.location.href = "login.html";
     });
-
-    // --- 2. GLOBAL VARIABLES ---
     const patientList = document.getElementById('patientSelectList');
     const searchInput = document.getElementById('editSearchInput');
     const editForm = document.getElementById('editPatientForm');
     const noSelectionState = document.getElementById('noSelectionState');
     let currentFirebaseDocId = null;
 
-    // --- 3. TOAST HELPER (Professional Messaging) ---
     function showToast(title, message, isError = false) {
         const toast = document.getElementById('unifiedToast');
         document.getElementById('toastTitle').innerText = title;
@@ -80,8 +74,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         toast.classList.add('show');
         setTimeout(() => { toast.classList.remove('show'); }, 4000);
     }
-
-    // --- 4. FETCH AND RENDER PATIENTS ---
     async function loadPatients() {
         try {
             const q = query(collection(db, "patients"));
@@ -117,7 +109,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // --- 5. SEARCH LOGIC ---
     searchInput.addEventListener('keyup', (e) => {
         const filter = e.target.value.toLowerCase();
         const items = patientList.querySelectorAll('.patient-select-item');
@@ -131,7 +122,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    // --- 6. POPULATE EDIT FORM ---
     function openEditForm(firebaseDocId, patientData) {
         currentFirebaseDocId = firebaseDocId;
         noSelectionState.style.display = 'none';
@@ -149,7 +139,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (patientData.bedRequirement) document.getElementById('editBed').value = patientData.bedRequirement;
     }
 
-    // --- 7. SAVE UPDATES (Update Firestore) ---
     editForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = document.getElementById('saveEditBtn');
@@ -184,27 +173,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // --- 8. CUSTOM UI DISCHARGE PATIENT LOGIC ---
     const confirmModal = document.getElementById('confirmModal');
     const cancelDischargeBtn = document.getElementById('cancelDischargeBtn');
     const proceedDischargeBtn = document.getElementById('proceedDischargeBtn');
     const confirmPatientName = document.getElementById('confirmPatientName');
 
-    // Open Custom Modal
     document.getElementById('dischargeBtn').addEventListener('click', () => {
         const patientName = document.getElementById('editName').value;
         confirmPatientName.innerText = patientName;
         confirmModal.style.display = 'flex';
     });
 
-    // Close Custom Modal
     cancelDischargeBtn.addEventListener('click', () => {
         confirmModal.style.display = 'none';
     });
 
-    // Confirm Deletion inside Modal
     proceedDischargeBtn.addEventListener('click', async () => {
-        confirmModal.style.display = 'none'; // Close the modal
+        confirmModal.style.display = 'none';
 
         if (currentFirebaseDocId) {
             const btn = document.getElementById('dischargeBtn');
@@ -235,6 +220,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // Initialize list on page load
     loadPatients();
 });
