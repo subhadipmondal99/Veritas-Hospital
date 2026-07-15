@@ -24,7 +24,7 @@ A premium, full-stack healthcare administration platform developed as a comprehe
 * **Real-Time Analytics:** Live data visualization of bed capacity and operational efficiency using Chart.js.
 * **Active Status Tracking:** Real-time tracking of doctors' current statuses (e.g., *Available, In Surgery, On Rounds*).
 
----
+-----
 
 ## 🛠️ Tech Stack
 
